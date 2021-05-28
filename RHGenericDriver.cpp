@@ -180,9 +180,15 @@ void RHGenericDriver::printBuffer(const char* prompt, const uint8_t* buf, uint8_
     for (i = 0; i < len; i++)
     {
 	if (i % 16 == 15)
+    {
+        if (buf[i] < 16)
+            Serial.print('0');
 	    Serial.println(buf[i], HEX);
+    }
 	else
 	{
+        if (buf[i] < 16)
+            Serial.print('0');
 	    Serial.print(buf[i], HEX);
 	    Serial.print(' ');
 	}

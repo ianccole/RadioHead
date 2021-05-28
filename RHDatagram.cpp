@@ -33,6 +33,7 @@ void RHDatagram::setThisAddress(uint8_t thisAddress)
 bool RHDatagram::sendto(uint8_t* buf, uint8_t len, uint8_t address)
 {
     setHeaderTo(address);
+    RHGenericDriver::printBuffer("TX:",buf,len);
     return _driver.send(buf, len);
 }
 
@@ -40,6 +41,7 @@ bool RHDatagram::recvfrom(uint8_t* buf, uint8_t* len, uint8_t* from, uint8_t* to
 {
     if (_driver.recv(buf, len))
     {
+    RHGenericDriver::printBuffer("RX:",buf,*len);
 	if (from)  *from =  headerFrom();
 	if (to)    *to =    headerTo();
 	if (id)    *id =    headerId();
