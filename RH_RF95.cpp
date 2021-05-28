@@ -26,7 +26,7 @@ PROGMEM static const RH_RF95::ModemConfig MODEM_CONFIG_TABLE[] =
     { 0x48,   0x94,    0x04}, // Bw31_25Cr48Sf512, AGC enabled
     { 0x78,   0xc4,    0x0c}, // Bw125Cr48Sf4096, AGC enabled
     { 0x72,   0xb4,    0x04}, // Bw125Cr45Sf2048, AGC enabled
-    
+    { 0x72,   0xa4,    0x04}, // Bw125Cr45Sf1024, AGC enabled
 };
 
 RH_RF95::RH_RF95(uint8_t slaveSelectPin, uint8_t interruptPin, RHGenericSPI& spi)
