@@ -71,6 +71,8 @@ bool RHReliableDatagram::sendtoWait(uint8_t* buf, uint8_t len, uint8_t address)
 
 	sendto(buf, len, address);
 	waitPacketSent();
+    // Serial.print(F("Sent:"));
+    // Serial.println(millis());
 
 	// Never wait for ACKS to broadcasts:
 	if (address == RH_BROADCAST_ADDRESS)
@@ -103,6 +105,8 @@ bool RHReliableDatagram::sendtoWait(uint8_t* buf, uint8_t len, uint8_t address)
 			   && (id == thisSequenceNumber))
 		    {
 			// Its the ACK we are waiting for
+            // Serial.print(F("Acked:"));
+            // Serial.println(millis());
 			return true;
 		    }
 		    else if (   !(flags & RH_FLAGS_ACK)
